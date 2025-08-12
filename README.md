@@ -1,5 +1,12 @@
 # 📱 About Me:
-◽ Hi, I'm Vexy Verosika<br>  A fucking femboy dev from Brazil<br><br>    ◽ I’m currently studying Software Engineering<br><br>    ◽ I’m currently learning Excel, Word, Powerpoint, CSS, HTML, JavaScript, Node.JS and Python<br><br>    ◽ I’m looking for help with Discord Bot<br><br>    ◽ Discord:velquis<br><br>    ◽ Working on some projects...<br><br>    ◽ Fun fact i love to chat with anyone<br>
+◽ Hi, I'm Vexy Verosika<br> A fucking femboy dev from Brazil<br><br>    ◽ I’m currently studying Software Engineering<br><br>    ◽ I’m currently learning Excel, Word, Powerpoint, CSS, HTML, JavaScript, Node.JS and Python<br><br>    ◽ I’m looking for help with Discord Bot<br><br>   ◽ Working on some projects...<br><br>    ◽ i'm lazy but i get my work done if i needed!<br>
+
+---
+
+# 🌐 Contacts:
+<a target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="velquis" height="30" width="30" /> </a> velquis<br>
+<a target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="velquis" height="25" width="30" /> </a> @vexy.maybe.him<br>
+<a target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="@z_vexy" height="30" width="30" /> </a> @z_vexy<br><br>
 
 ---
 
