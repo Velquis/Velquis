@@ -1,5 +1,5 @@
 # 📱 About Me:
-Hi, I'm Vexy Verosika<br>a fucking femboy dev from Brazil<br><br>    📆 I’m currently studying Software Engineering<br><br>    💿 I’m currently learning Excel, Word, Powerpoint, CSS, HTML, JavaScript, Node.JS and Python<br><br>    🤝 I’m looking for help with Discord Bot<br><br>    💬 Discord: velquis<br><br>    💻 Working on some projects...<br><br>    🎀 Fun fact i'm femboy and learning code<br>
+◽ Hi, I'm Vexy Verosika<br> ◽ A fucking femboy dev from Brazil<br><br>    ◽ I’m currently studying Software Engineering<br><br>    ◽ I’m currently learning Excel, Word, Powerpoint, CSS, HTML, JavaScript, Node.JS and Python<br><br>    ◽ I’m looking for help with Discord Bot<br><br>    ◽ Discord: velquis<br><br>    ◽ Working on some projects...<br><br>    ◽ Fun fact i love to chat with anyone<br>
 
 
 # 💻 Cloud/Languages/Stuff that i'm studying:
