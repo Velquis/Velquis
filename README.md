@@ -1,5 +1,21 @@
 # 📱 About Me:
+
+---
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/-Made_by_Brazilian-009C3B?style=for-the-badge&logo=spotify">
+<img src="https://img.shields.io/badge/-Femboy_Developer-FF73FA?style=for-the-badge&logo=tinder">
+<img src="https://img.shields.io/badge/-Lazy_but_Effective-FFD700?style=for-the-badge&logo=slack">
+<img src="https://img.shields.io/badge/-Coffee_Addict-6F4E37?style=for-the-badge&logo=coffeescript">
+<img src="https://img.shields.io/badge/-Developer-333333?style=for-the-badge&logo=github">
+
+</div>
+
+---
+
 ◽ Hi, I'm Vexy Verosika<br> A fucking femboy dev from Brazil<br><br>    ◽ I’m currently studying Software Engineering<br><br>    ◽ I’m currently learning Excel, Word, Powerpoint, CSS, HTML, JavaScript, Node.JS and Python<br><br>    ◽ I’m looking for help with Discord Bot<br><br>   ◽ Working on some projects...<br><br>    ◽ i'm lazy but i get my work done if i needed!<br>
+
 
 ---
 
