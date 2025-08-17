@@ -4,11 +4,11 @@
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/-Brazilian-009C3B?style=for-the-badge&logo=spotify">
-<img src="https://img.shields.io/badge/-Femboy-FF73FA?style=for-the-badge&logo=tinder">
-<img src="https://img.shields.io/badge/-Lazy_but_Effective-FFD700?style=for-the-badge&logo=slack">
-<img src="https://img.shields.io/badge/-Coffee_Addict-6F4E37?style=for-the-badge&logo=coffeescript">
-<img src="https://img.shields.io/badge/-Developer-333333?style=for-the-badge&logo=github">
+<img src="https://img.shields.io/badge/-Brazilian-009C3B?style=for-the-badge&logo=spotify&logoColor=black">
+<img src="https://img.shields.io/badge/-Femboy-FF73FA?style=for-the-badge&logo=tinder&logoColor=black">
+<img src="https://img.shields.io/badge/-Lazy_but_Effective-FFD700?style=for-the-badge&logo=slack&logoColor=black">
+<img src="https://img.shields.io/badge/-Coffee_Addict-6F4E37?style=for-the-badge&logo=coffeescript&logoColor=black">
+<img src="https://img.shields.io/badge/-Developer-333333?style=for-the-badge&logo=github&logoColor=black">
 
 </div>
 
