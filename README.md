@@ -1,6 +1,14 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:111111,100:111111&height=120&section=header&text=VEXY&fontSize=50&fontColor=ffb6d9&animation=fadeIn&fontAlignY=55" width="100%" />
+<div align="center">
+
+<img
+  src="https://raw.githubusercontent.com/velquis/velquis/main/"
+  width="100%"
+  alt="Vexy — black and pastel pink retro header"
+/>
+
+</div>
 
 <img src="https://img.shields.io/badge/Brazilian-171717?style=for-the-badge&logoColor=ffb6d9" />
 <img src="https://img.shields.io/badge/Lazy%20but%20Effective-171717?style=for-the-badge&logo=github&logoColor=ffb6d9" />
