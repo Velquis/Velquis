@@ -77,28 +77,6 @@
 
 </div>
 
-
-## 📊 GitHub Stats
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=velquis&show_icons=true&bg_color=171717&title_color=ffb6d9&text_color=ffffff&icon_color=ffb6d9&border_color=ffb6d9&hide_border=false&include_all_commits=true&count_private=true" />
-
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=velquis&layout=compact&bg_color=171717&title_color=ffb6d9&text_color=ffffff&border_color=ffb6d9" />
-
-<img src="https://nirzak-streak-stats.vercel.app/?user=velquis&background=171717&ring=ffb6d9&fire=ffb6d9&currStreakLabel=ffb6d9&sideLabels=ffb6d9&currStreakNum=ffffff&sideNums=ffffff&dates=aaaaaa&border=ffb6d9&hide_border=false" />
-
-<br/>
-
-<img src="https://github-profile-trophy.vercel.app/?username=velquis&theme=darkhub&no-frame=true&no-bg=true&margin-w=4&title_color=ffb6d9" />
-
-<br/>
-
-<img src="https://visitcount.itsvg.in/api?id=velquis&icon=1&color=13" />
-
-</div>
-
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:111111,100:111111&height=3" width="100%" />
