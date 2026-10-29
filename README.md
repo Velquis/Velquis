@@ -3,7 +3,7 @@
 <div align="center">
 
 <img
-  src="https://raw.githubusercontent.com/velquis/velquis/main/"
+  src="https://raw.githubusercontent.com/velquis/velquis/main/Neon Glitch VEXY Cyberpunk Banner.png" 
   width="100%"
   alt="Vexy — black and pastel pink retro header"
 />
