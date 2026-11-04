@@ -116,9 +116,10 @@ def svg_card(stats):
     ]
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="190" viewBox="0 0 960 190">',
-        '<rect width="960" height="190" rx="14" fill="#0d1117"/>',
+        '<rect width="960" height="190" rx="14" fill="#171717"/>',
         '<rect x="0" y="0" width="960" height="4" rx="2" fill="#ffb6d9"/>',
-        '<text x="32" y="42" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">STEAM PLAYER // VELZINHA</text>',
+        '<g transform="translate(34 23)" fill="none" stroke="#ffb6d9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="12" r="8.5" fill="#ffb6d9" stroke="none"/><circle cx="20" cy="12" r="3.2" fill="#171717" stroke="none"/><circle cx="4.5" cy="25" r="4.5"/><path d="M8.5 22.5 L14 17.5"/></g>',
+        '<text x="72" y="42" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">STEAM // VELZINHA</text>',
         '<text x="928" y="42" text-anchor="end" fill="#8b949e" font-family="Arial, sans-serif" font-size="11">LIVE PROFILE DATA</text>',
     ]
     positions = [32, 267, 502, 737]
@@ -131,7 +132,7 @@ def svg_card(stats):
         )
         if index < 3:
             parts.append(
-                f'<line x1="{x + 205}" y1="72" x2="{x + 205}" y2="150" stroke="#30363d" stroke-width="1"/>'
+                f'<line x1="{x + 205}" y1="72" x2="{x + 205}" y2="150" stroke="#292929" stroke-width="1"/>'
             )
     parts.extend([
         '<text x="32" y="174" fill="#6e7681" font-family="Arial, sans-serif" font-size="10">AUTO-SYNCED WITH STEAM</text>',
