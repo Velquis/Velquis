@@ -71,7 +71,7 @@
 
   
 [![GitHub](https://img.shields.io/badge/GitHub-171717?style=for-the-badge&logo=github&logoColor=ffb6d9)](https://github.com/velquis)
-[![Instagram](https://img.shields.io/badge/Instagram-171717?style=for-the-badge&logo=instagram&logoColor=ffb6d9)](https://www.instagram.com/vexy.maybe.him/)
+[![Instagram](https://img.shields.io/badge/Instagram-171717?style=for-the-badge&logo=instagram&logoColor=ffb6d9)](https://www.instagram.com/vexy.dev/)
 [![X](https://img.shields.io/badge/Twitter-171717?style=for-the-badge&logo=x&logoColor=ffb6d9)](https://x.com/z_vexy)
 ![Discord](https://img.shields.io/badge/Discord:ㅤㅤVelquis-171717?style=for-the-badge&logo=discord&logoColor=ffb6d9)
 
