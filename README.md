@@ -22,11 +22,11 @@
 
 ## About Me
 
-- Software Engineering student — 4th semester.
-- Learning, experimenting and building things.
-- Powered by coffee and questionable sleep schedules.
+- Software Engineering student.
+- Project zomboid addicted.
+- i like databases and backend stuff.
 - idk what to put in here btw.
-- Lazy but effective. I get things done when it matters.
+- i have a 40 hours long spotify playlist.
 
 *i code for fun sometimes, sooooooo yeah, kinda having fun idk*
 
