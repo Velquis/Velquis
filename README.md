@@ -23,10 +23,10 @@
 ## About Me
 
 - Software Engineering student.
-- Project zomboid addicted.
-- i like databases and backend stuff.
-- idk what to put in here btw.
-- i have a 40 hours long spotify playlist.
+- Project Zomboid addict.
+- I like databases and backend stuff.
+- idk what to put in here :P.
+- I have a 40-hour Spotify playlist.
 
 *i code for fun sometimes, sooooooo yeah, kinda having fun idk*
 
