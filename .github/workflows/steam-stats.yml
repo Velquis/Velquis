@@ -40,5 +40,6 @@ jobs:
             echo "Steam statistics have not changed."
           else
             git commit -m "chore: update Steam profile statistics"
+            git pull --rebase origin main
             git push
           fi
