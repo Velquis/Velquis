@@ -174,26 +174,27 @@ def svg_card(stats, profile):
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1120" height="460" viewBox="0 0 1120 460">',
         '<rect width="1120" height="460" rx="18" fill="#171717"/>',
+        '<defs><clipPath id="avatarCircle"><circle cx="134.5" cy="160.5" r="72.5"/></clipPath></defs>',
         '<rect x="0" y="0" width="1120" height="5" rx="2" fill="#ffb6d9"/>',
         '<text x="38" y="45" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">STEAM PROFILE</text>',
         '<text x="1080" y="45" text-anchor="end" fill="#777777" font-family="Arial, sans-serif" font-size="11" letter-spacing="1">LIVE PROFILE DATA</text>',
         '<line x1="270" y1="72" x2="270" y2="270" stroke="#303030" stroke-width="1"/>',
-        f'<a xlink:href="{html.escape(profile["profile_url"], quote=True)}"><image xlink:href="{profile["avatar_data_uri"]}" x="62" y="88" width="145" height="145" preserveAspectRatio="xMidYMid slice"/></a>',
-        '<rect x="62" y="88" width="145" height="145" rx="18" fill="none" stroke="#ffb6d9" stroke-width="3"/>',
+        f'<a xlink:href="{html.escape(profile["profile_url"], quote=True)}"><image xlink:href="{profile["avatar_data_uri"]}" x="62" y="88" width="145" height="145" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarCircle)"/></a>',
+        '<circle cx="134.5" cy="160.5" r="72.5" fill="none" stroke="#ffb6d9" stroke-width="3"/>',
         f'<text x="134" y="267" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="700">{html.escape(profile["name"])}</text>',
         '<text x="134" y="290" text-anchor="middle" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2">STEAM PLAYER</text>',
         '<text x="310" y="92" fill="#aaaaaa" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">PLAYER OVERVIEW</text>',
     ]
-    positions = [310, 505, 700, 895]
-    for (value, label), x in zip(values, positions):
-        parts.append(
-            f'<text x="{x}" y="165" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="48" font-weight="700">{html.escape(value)}</text>'
-        )
-        parts.append(
-            f'<text x="{x}" y="191" fill="#a1a1aa" font-family="Arial, sans-serif" font-size="11" letter-spacing="1.1">{label}</text>'
-        )
+    badge_positions = [300, 496, 692, 888]
+    for (value, label), x in zip(values, badge_positions):
+        parts.extend([
+            f'<rect x="{x}" y="112" width="176" height="112" rx="16" fill="#202020" stroke="#343434" stroke-width="1.5"/>',
+            f'<rect x="{x + 14}" y="126" width="148" height="3" rx="1.5" fill="#ffb6d9" opacity="0.75"/>',
+            f'<text x="{x + 88}" y="178" text-anchor="middle" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="43" font-weight="700">{html.escape(value)}</text>',
+            f'<text x="{x + 88}" y="202" text-anchor="middle" fill="#c5c5c5" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">{label}</text>',
+        ])
     parts.extend([
-        '<line x1="310" y1="220" x2="1080" y2="220" stroke="#303030" stroke-width="1"/>',
+        '<line x1="300" y1="244" x2="1080" y2="244" stroke="#303030" stroke-width="1"/>',
         '<text x="38" y="345" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">MOST PLAYED GAMES</text>',
     ])
     game_positions = [38, 405, 772]
