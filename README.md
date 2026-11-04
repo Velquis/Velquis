@@ -51,7 +51,7 @@
 </div>
 
 
-## 🎮 Games I Like
+## Games I Like
 
 <div align="center">
 
@@ -65,7 +65,7 @@
 </div>
 
 
-## 🌐 Find Me
+## Find Me
 
 <div align="center">
 
