@@ -20,9 +20,9 @@ OUT = Path("assets/steam-stats.svg")
 TIMEOUT = 30
 
 
-def api_get(interface, method, params):
+def api_get(interface, method, params, version="v1"):
     query = urllib.parse.urlencode(params)
-    url = f"{API}/{interface}/{method}/v1/?{query}"
+    url = f"{API}/{interface}/{method}/{version}/?{query}"
     request = urllib.request.Request(
         url, headers={"User-Agent": "Velquis-Steam-Stats/1.0"}
     )
@@ -52,6 +52,7 @@ def get_player_profile(steam_id):
         "ISteamUser",
         "GetPlayerSummaries",
         {"key": API_KEY, "steamids": steam_id},
+        version="v2",
     )
     players = data.get("response", {}).get("players", [])
     if not players:
