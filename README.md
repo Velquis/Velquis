@@ -3,7 +3,7 @@
 <div align="center">
 
 <img
-  src="" 
+  src="https://github.com/Velquis/Velquis/blob/main/comm_vexy2.png?raw=true" 
   width="100%"
   alt="Vexy banner"
 />
