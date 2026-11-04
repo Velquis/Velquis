@@ -48,7 +48,7 @@
 
 </div>
 
-## Game accounts
+## Steam stats
 
 <div align="center">
 
