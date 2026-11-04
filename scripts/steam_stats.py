@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate a compact Steam statistics card for the GitHub profile README."""
 
+import base64
 import concurrent.futures
 import html
 import json
@@ -44,6 +45,38 @@ def resolve_steam_id():
             f"Could not resolve Steam profile '{VANITY}'. Check the vanity URL."
         )
     return result["steamid"]
+
+
+def get_player_profile(steam_id):
+    data = api_get(
+        "ISteamUser",
+        "GetPlayerSummaries",
+        {"key": API_KEY, "steamids": steam_id},
+    )
+    players = data.get("response", {}).get("players", [])
+    if not players:
+        raise RuntimeError("Steam did not return profile details for this account.")
+    player = players[0]
+    avatar_url = player.get("avatarfull") or player.get("avatarmedium") or player.get("avatar")
+    if not avatar_url:
+        raise RuntimeError("Steam did not return a profile avatar.")
+    request = urllib.request.Request(
+        avatar_url, headers={"User-Agent": "Velquis-Steam-Stats/1.0"}
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+            avatar_bytes = response.read()
+            content_type = response.headers.get("Content-Type", "image/jpeg")
+    except (urllib.error.URLError, TimeoutError) as exc:
+        raise RuntimeError(f"Could not download Steam avatar: {exc}") from exc
+    if not content_type.startswith("image/"):
+        content_type = "image/jpeg"
+    avatar_data = base64.b64encode(avatar_bytes).decode("ascii")
+    return {
+        "name": player.get("personaname", "Steam Player"),
+        "profile_url": player.get("profileurl", "https://steamcommunity.com/"),
+        "avatar_data_uri": f"data:{content_type};base64,{avatar_data}",
+    }
 
 
 def get_owned_games(steam_id):
@@ -107,7 +140,7 @@ def inspect_game(game, steam_id):
         return None
 
 
-def svg_card(stats):
+def svg_card(stats, profile):
     values = [
         (f"{stats['perfect_games']}", "PERFECT GAMES"),
         (f"{stats['total_games']}", "GAMES OWNED"),
@@ -118,8 +151,10 @@ def svg_card(stats):
         '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="190" viewBox="0 0 960 190">',
         '<rect width="960" height="190" rx="14" fill="#171717"/>',
         '<rect x="0" y="0" width="960" height="4" rx="2" fill="#ffb6d9"/>',
-        '<g transform="translate(34 23)" fill="none" stroke="#ffb6d9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="12" r="8.5" fill="#ffb6d9" stroke="none"/><circle cx="20" cy="12" r="3.2" fill="#171717" stroke="none"/><circle cx="4.5" cy="25" r="4.5"/><path d="M8.5 22.5 L14 17.5"/></g>',
-        '<text x="72" y="42" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">STEAM // VELZINHA</text>',
+        f'<a href="{html.escape(profile["profile_url"], quote=True)}"><image href="{profile["avatar_data_uri"]}" x="32" y="18" width="58" height="58" preserveAspectRatio="xMidYMid slice"/></a>',
+        '<rect x="32" y="18" width="58" height="58" rx="12" fill="none" stroke="#ffb6d9" stroke-width="2"/>',
+        f'<text x="108" y="43" fill="#ffffff" font-family="Arial, sans-serif" font-size="17" font-weight="700">{html.escape(profile["name"])}</text>',
+        '<text x="108" y="63" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">STEAM PLAYER</text>',
         '<text x="928" y="42" text-anchor="end" fill="#8b949e" font-family="Arial, sans-serif" font-size="11">LIVE PROFILE DATA</text>',
     ]
     positions = [32, 267, 502, 737]
@@ -147,6 +182,7 @@ def main():
         raise RuntimeError("Missing STEAM_API_KEY. Add it to repository Actions secrets.")
 
     steam_id = resolve_steam_id()
+    profile = get_player_profile(steam_id)
     games = get_owned_games(steam_id)
     total_games = len(games)
     total_minutes = sum(game.get("playtime_forever", 0) for game in games)
@@ -181,7 +217,7 @@ def main():
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(svg_card(stats), encoding="utf-8")
+    OUT.write_text(svg_card(stats, profile), encoding="utf-8")
     Path("assets/steam-stats.json").write_text(
         json.dumps(stats, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
