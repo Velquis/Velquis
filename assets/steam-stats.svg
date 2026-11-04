@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="190" viewBox="0 0 960 190">
+  <rect width="960" height="190" rx="14" fill="#0d1117"/>
+  <rect width="960" height="4" rx="2" fill="#ffb6d9"/>
+  <text x="32" y="42" fill="#ffb6d9" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2">STEAM PLAYER // VELZINHA</text>
+  <text x="32" y="104" fill="#ffb6d9" font-family="Arial,sans-serif" font-size="25" font-weight="700">Waiting for first sync...</text>
+  <text x="32" y="140" fill="#a1a1aa" font-family="Arial,sans-serif" font-size="12">Add STEAM_API_KEY to repository Actions secrets to activate live stats.</text>
+  <text x="928" y="174" text-anchor="end" fill="#6e7681" font-family="Arial,sans-serif" font-size="10">GITHUB ACTIONS</text>
+</svg>
