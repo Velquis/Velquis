@@ -85,6 +85,24 @@ def get_player_profile(steam_id):
     }
 
 
+def get_game_cover(app_id):
+    cover_url = f"https://cdn.akamai.steamstatic.com/steam/apps/{app_id}/header.jpg"
+    request = urllib.request.Request(
+        cover_url, headers={"User-Agent": "Mozilla/5.0 (compatible; Velquis-Steam-Stats/1.0)"}
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=12) as response:
+            image_bytes = response.read()
+            content_type = response.headers.get("Content-Type", "image/jpeg")
+        if not content_type.startswith("image/"):
+            content_type = "image/jpeg"
+        encoded = base64.b64encode(image_bytes).decode("ascii")
+        return f"data:{content_type};base64,{encoded}"
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        print(f"WARNING: cover unavailable for app {app_id}: {exc!r}")
+        return cover_url
+
+
 def get_owned_games(steam_id):
     data = api_get(
         "IPlayerService",
@@ -154,30 +172,46 @@ def svg_card(stats, profile):
         (f"{stats['hours']:,}", "HOURS PLAYED"),
     ]
     parts = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="190" viewBox="0 0 960 190">',
-        '<rect width="960" height="190" rx="14" fill="#171717"/>',
-        '<rect x="0" y="0" width="960" height="4" rx="2" fill="#ffb6d9"/>',
-        f'<a href="{html.escape(profile["profile_url"], quote=True)}"><image href="{profile["avatar_data_uri"]}" x="32" y="18" width="58" height="58" preserveAspectRatio="xMidYMid slice"/></a>',
-        '<rect x="32" y="18" width="58" height="58" rx="12" fill="none" stroke="#ffb6d9" stroke-width="2"/>',
-        f'<text x="108" y="43" fill="#ffffff" font-family="Arial, sans-serif" font-size="17" font-weight="700">{html.escape(profile["name"])}</text>',
-        '<text x="108" y="63" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">STEAM PLAYER</text>',
-        '<text x="928" y="42" text-anchor="end" fill="#8b949e" font-family="Arial, sans-serif" font-size="11">LIVE PROFILE DATA</text>',
+        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1120" height="460" viewBox="0 0 1120 460">',
+        '<rect width="1120" height="460" rx="18" fill="#171717"/>',
+        '<rect x="0" y="0" width="1120" height="5" rx="2" fill="#ffb6d9"/>',
+        '<text x="38" y="45" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">STEAM PROFILE</text>',
+        '<text x="1080" y="45" text-anchor="end" fill="#777777" font-family="Arial, sans-serif" font-size="11" letter-spacing="1">LIVE PROFILE DATA</text>',
+        '<line x1="270" y1="72" x2="270" y2="270" stroke="#303030" stroke-width="1"/>',
+        f'<a xlink:href="{html.escape(profile["profile_url"], quote=True)}"><image xlink:href="{profile["avatar_data_uri"]}" x="62" y="88" width="145" height="145" preserveAspectRatio="xMidYMid slice"/></a>',
+        '<rect x="62" y="88" width="145" height="145" rx="18" fill="none" stroke="#ffb6d9" stroke-width="3"/>',
+        f'<text x="134" y="267" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="700">{html.escape(profile["name"])}</text>',
+        '<text x="134" y="290" text-anchor="middle" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2">STEAM PLAYER</text>',
+        '<text x="310" y="92" fill="#aaaaaa" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">PLAYER OVERVIEW</text>',
     ]
-    positions = [32, 267, 502, 737]
-    for index, ((value, label), x) in enumerate(zip(values, positions)):
+    positions = [310, 505, 700, 895]
+    for (value, label), x in zip(values, positions):
         parts.append(
-            f'<text x="{x}" y="112" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="42" font-weight="700">{html.escape(value)}</text>'
+            f'<text x="{x}" y="165" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="48" font-weight="700">{html.escape(value)}</text>'
         )
         parts.append(
-            f'<text x="{x}" y="140" fill="#a1a1aa" font-family="Arial, sans-serif" font-size="11" letter-spacing="1.3">{label}</text>'
+            f'<text x="{x}" y="191" fill="#a1a1aa" font-family="Arial, sans-serif" font-size="11" letter-spacing="1.1">{label}</text>'
         )
-        if index < 3:
-            parts.append(
-                f'<line x1="{x + 205}" y1="72" x2="{x + 205}" y2="150" stroke="#292929" stroke-width="1"/>'
-            )
     parts.extend([
-        '<text x="32" y="174" fill="#6e7681" font-family="Arial, sans-serif" font-size="10">AUTO-SYNCED WITH STEAM</text>',
-        '<text x="928" y="174" text-anchor="end" fill="#6e7681" font-family="Arial, sans-serif" font-size="10">GITHUB ACTIONS</text>',
+        '<line x1="310" y1="220" x2="1080" y2="220" stroke="#303030" stroke-width="1"/>',
+        '<text x="38" y="345" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">MOST PLAYED GAMES</text>',
+    ])
+    game_positions = [38, 405, 772]
+    for game, x in zip(stats.get("top_games", []), game_positions):
+        name = html.escape(game["name"])
+        hours = f'{game["hours"]:,} HRS'
+        cover = game["cover"]
+        parts.extend([
+            f'<rect x="{x}" y="362" width="330" height="82" rx="10" fill="#202020"/>',
+            f'<image xlink:href="{cover}" x="{x + 8}" y="370" width="132" height="66" preserveAspectRatio="xMidYMid slice"/>',
+            f'<text x="{x + 152}" y="395" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="700">{name[:28]}</text>',
+            f'<text x="{x + 152}" y="419" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1">{hours}</text>',
+        ])
+    if not stats.get("top_games"):
+        parts.append('<text x="38" y="395" fill="#aaaaaa" font-family="Arial, sans-serif" font-size="13">No playtime data available yet.</text>')
+    parts.extend([
+        '<text x="38" y="454" fill="#666666" font-family="Arial, sans-serif" font-size="9">AUTO-SYNCED WITH STEAM</text>',
+        '<text x="1080" y="454" text-anchor="end" fill="#666666" font-family="Arial, sans-serif" font-size="9">GITHUB ACTIONS</text>',
         '</svg>',
     ])
     return "\n".join(parts)
@@ -205,6 +239,20 @@ def main():
             if index % 25 == 0 or index == total_games:
                 print(f"Checked {index}/{total_games} games")
 
+    top_games = sorted(
+        [game for game in games if game.get("playtime_forever", 0) > 0],
+        key=lambda game: game.get("playtime_forever", 0),
+        reverse=True,
+    )[:3]
+    top_games_display = []
+    for game in top_games:
+        top_games_display.append({
+            "app_id": game["appid"],
+            "name": game.get("name", f"App {game['appid']}"),
+            "hours": round(game.get("playtime_forever", 0) / 60),
+            "cover": get_game_cover(game["appid"]),
+        })
+
     perfect_games = sum(1 for item in results if item["perfect"])
     unlocked = sum(item["unlocked"] for item in results)
     total_achievements = sum(item["total"] for item in results)
@@ -220,6 +268,7 @@ def main():
             [item["name"] for item in results if item["perfect"]],
             key=str.casefold,
         ),
+        "top_games": top_games_display,
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
