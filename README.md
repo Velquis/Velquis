@@ -65,6 +65,21 @@
 </div>
 
 
+## Game accounts
+
+<div align="center">
+
+<a href="https://steamcommunity.com/id/Velzinha/">
+  <img src="assets/steam-stats.svg" width="100%" alt="Steam statistics for Velzinha" />
+</a>
+
+[![Steam](https://img.shields.io/badge/Steam-171717?style=for-the-badge&logo=steam&logoColor=ffb6d9)](https://steamcommunity.com/id/Velzinha/)
+
+*Games, music, customization and a little bit of nostalgia.*
+
+</div>
+
+
 ## Find Me
 
 <div align="center">
