@@ -20,7 +20,7 @@
 </div>
 
 
-## About Me
+## About me
 
 - Software Engineering student.
 - Project Zomboid addict.
@@ -31,7 +31,7 @@
 *i code for fun sometimes, sooooooo yeah, kinda having fun idk*
 
 
-## Languages & Tools
+## Languages & tools
 
 <div align="center">
 
@@ -65,7 +65,7 @@
 </div>
 
 
-## Find Me
+## Socials
 
 <div align="center">
 
