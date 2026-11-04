@@ -60,22 +60,27 @@ def get_player_profile(steam_id):
     avatar_url = player.get("avatarfull") or player.get("avatarmedium") or player.get("avatar")
     if not avatar_url:
         raise RuntimeError("Steam did not return a profile avatar.")
+    # Prefer embedding the avatar bytes, but do not fail the whole stats update
+    # if Steam's image CDN temporarily rejects the download.
+    avatar_reference = avatar_url
     request = urllib.request.Request(
-        avatar_url, headers={"User-Agent": "Velquis-Steam-Stats/1.0"}
+        avatar_url, headers={"User-Agent": "Mozilla/5.0 (compatible; Velquis-Steam-Stats/1.0)"}
     )
     try:
         with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
             avatar_bytes = response.read()
             content_type = response.headers.get("Content-Type", "image/jpeg")
-    except (urllib.error.URLError, TimeoutError) as exc:
-        raise RuntimeError(f"Could not download Steam avatar: {exc}") from exc
-    if not content_type.startswith("image/"):
-        content_type = "image/jpeg"
-    avatar_data = base64.b64encode(avatar_bytes).decode("ascii")
+        if not content_type.startswith("image/"):
+            content_type = "image/jpeg"
+        avatar_data = base64.b64encode(avatar_bytes).decode("ascii")
+        avatar_reference = f"data:{content_type};base64,{avatar_data}"
+        print("Steam avatar downloaded successfully.")
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        print(f"WARNING: Could not download Steam avatar ({exc!r}); using its public URL.")
     return {
         "name": player.get("personaname", "Steam Player"),
         "profile_url": player.get("profileurl", "https://steamcommunity.com/"),
-        "avatar_data_uri": f"data:{content_type};base64,{avatar_data}",
+        "avatar_data_uri": avatar_reference,
     }
 
 
