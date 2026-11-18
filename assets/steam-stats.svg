@@ -12,7 +12,7 @@
 <text x="310" y="92" fill="#aaaaaa" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">PLAYER OVERVIEW</text>
 <rect x="300" y="112" width="176" height="112" rx="16" fill="#202020" stroke="#343434" stroke-width="1.5"/>
 <rect x="314" y="126" width="148" height="3" rx="1.5" fill="#ffb6d9" opacity="0.75"/>
-<text x="388" y="178" text-anchor="middle" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="43" font-weight="700">24</text>
+<text x="388" y="178" text-anchor="middle" fill="#ffb6d9" font-family="Arial, sans-serif" font-size="43" font-weight="700">23</text>
 <text x="388" y="202" text-anchor="middle" fill="#c5c5c5" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">PERFECT GAMES</text>
 <rect x="496" y="112" width="176" height="112" rx="16" fill="#202020" stroke="#343434" stroke-width="1.5"/>
 <rect x="510" y="126" width="148" height="3" rx="1.5" fill="#ffb6d9" opacity="0.75"/>
